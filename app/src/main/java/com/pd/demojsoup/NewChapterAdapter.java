@@ -12,12 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.List;
+
 class NewChapterAdapter extends RecyclerView.Adapter<NewChapterAdapter.NewChapterHolder> {
 
     private Context context;
+    private List<Chapter> chapters;
 
-    NewChapterAdapter(Context context) {
+    NewChapterAdapter(Context context, List<Chapter> chapters) {
         this.context = context;
+        this.chapters = chapters;
     }
 
     @NonNull
@@ -29,8 +33,7 @@ class NewChapterAdapter extends RecyclerView.Adapter<NewChapterAdapter.NewChapte
 
     @Override
     public void onBindViewHolder(@NonNull NewChapterHolder holder, int position) {
-        Chapter chapter = new Chapter();
-        chapter.setImgChapter("https://c1.hako.re/lightnovel/covers/s3601-213a353c-1dba-4ff4-83be-4b1c9f3e4481-m.jpg");
+        Chapter chapter = chapters.get(position);
         chapter.setNameChapter("Chương 66: Một buổi sáng yên bình");
         chapter.setVolChapter("VOL III: HỌC VIỆN ANH HÙNG");
         chapter.setNameManga("Maou Gakuin No Futekigousha");
@@ -45,7 +48,7 @@ class NewChapterAdapter extends RecyclerView.Adapter<NewChapterAdapter.NewChapte
 
     @Override
     public int getItemCount() {
-        return 18;
+        return chapters.size();
     }
 
     class NewChapterHolder extends RecyclerView.ViewHolder {
